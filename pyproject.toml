@@ -79,6 +79,7 @@ packages = ["acumulus_mcp"]
 include = [
     "/acumulus_mcp",
     "/README.md",
+    "/CHANGELOG.md",
     "/LICENSE",
     "/LICENSE-COMMERCIAL.md",
     "/pyproject.toml",
