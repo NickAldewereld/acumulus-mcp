@@ -1,0 +1,91 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "acumulus-mcp"
+version = "0.1.0"
+description = "MCP server for Acumulus — let Claude (Desktop, Code, Cursor) read and modify your Acumulus administration via natural language."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "AGPL-3.0-or-later"
+license-files = ["LICENSE", "LICENSE-COMMERCIAL.md"]
+authors = [
+    { name = "Nick Aldewereld", email = "nick@easeo.nl" },
+]
+keywords = [
+    "mcp",
+    "model-context-protocol",
+    "acumulus",
+    "invoicing",
+    "boekhouding",
+    "factuur",
+    "claude",
+    "anthropic",
+    "ai",
+    "automation",
+    "netherlands",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Intended Audience :: End Users/Desktop",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Office/Business :: Financial :: Accounting",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Utilities",
+    "Natural Language :: Dutch",
+    "Natural Language :: English",
+    "Typing :: Typed",
+]
+dependencies = [
+    "mcp>=1.0,<2",
+    "httpx>=0.25",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.23",
+    "respx>=0.21",
+    "build>=1.0",
+    "twine>=5.0",
+]
+
+[project.scripts]
+acumulus-mcp = "acumulus_mcp.server:run"
+
+[project.urls]
+Homepage = "https://easeo.nl/diensten/mcp-boekhoudpakketten"
+Documentation = "https://easeo.nl/diensten/mcp-boekhoudpakketten"
+Repository = "https://github.com/NickAldewereld/acumulus-mcp"
+Issues = "https://github.com/NickAldewereld/acumulus-mcp/issues"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["acumulus_mcp"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "/acumulus_mcp",
+    "/README.md",
+    "/LICENSE",
+    "/LICENSE-COMMERCIAL.md",
+    "/pyproject.toml",
+]
+exclude = [
+    "*.zip",
+    ".venv",
+    "__pycache__",
+    "*.pyc",
+]
